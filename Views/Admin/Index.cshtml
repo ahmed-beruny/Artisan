@@ -1,0 +1,42 @@
+@model List<Product>
+
+<div>
+    <a asp-action="AddCategory" asp-controller="Admin">Add Category</a>
+
+</div>
+
+<div>
+    <a asp-action="AddProduct" asp-controller="Admin">Add Product</a>
+    <div>
+        @foreach (var item in Model)
+        {
+            <div>
+                <table class="table">
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Image)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditProduct", new { id = item.Id })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Delete", "DeleteProduct", new { id = item.Id })
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+    </div>
+</div>
