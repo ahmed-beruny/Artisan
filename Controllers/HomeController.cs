@@ -17,7 +17,19 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        List<Product> products = _context.Products.ToList();
+        var query = from p in _context.Products
+                    join c in _context.Categories on p.CategoryId equals c.Id
+                    select new Product
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                        Description = p.Description,
+                        Price = p.Price,
+                        Image = p.Image,
+                        CategoryId = p.CategoryId,
+                        Category = c
+                    };
+        List<Product> products = query.ToList();
         return View(products);
     }
 

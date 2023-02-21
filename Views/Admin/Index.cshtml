@@ -1,9 +1,29 @@
 @model List<Product>
 
 <div>
-    <a asp-action="AddCategory" asp-controller="Admin">Add Category</a>
 
-</div>
+    <a asp-action="AddCategory" asp-controller="Admin">Add Category</a>
+    @* <div>
+        @foreach (var item in Model.Item1)
+        {
+            <div>
+                <table class="table">
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "EditCategory", new { id = item.Id })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Delete", "DeleteCategory", new { id = item.Id })
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+
+</div> *@
 
 <div>
     <a asp-action="AddProduct" asp-controller="Admin">Add Product</a>
